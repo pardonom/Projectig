@@ -14,3 +14,7 @@ class Voter:
     def __del__(self):
         print(f"[killed]Voter {self.__name}, id: {self.__voter_id}, has been removed from the system.")
 person1 = Voter("Boron", 1)
+
+class InPersonVoter:
+    def __init__(self, name, voter_id):
+        self.__name = name
