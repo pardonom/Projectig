@@ -13,4 +13,5 @@ class Voter:
 
     def __del__(self):
         print(f"[killed]Voter {self.__name}, id: {self.__voter_id}, has been removed from the system.")
+        print("this is voter fraud")
 person1 = Voter("Boron", 1)
