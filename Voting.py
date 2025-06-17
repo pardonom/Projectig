@@ -30,17 +30,18 @@ class Candidate:
         self.votes = 0
         print(f"[born c] Candidate: {self.name}, affiliated with party: {self.party}")
 
+    def receive_vote(self):
+        self.votes += 1
+        print(f"[vote +] A vote has been recorded for {self.name} affiliated with {self.party}. They have now {self.votes} vote(s).")
 
     def __del__(self):
         print(f"[killed c] Candidate {self.name} has been executed")
 
-    def receive_vote(self):
-        self.votes += 1
-        print(f"[vote +]A vote has been recorded for {self.name} affiliated with {self.party}. They have now {self.votes} vote(s).")
 
 class Ballot:
     def __init__(self):
         self.candidates = []
+        print(f"[born b] New ballot has been made")
 
     def add_candidate(self, candidate):
         self.candidates.append(candidate)
@@ -48,13 +49,13 @@ class Ballot:
 
     def record_vote(self, candidate, date):
         if candidate in self.candidates:
-            print(f"[vote on record]A vote for {candidate.name} on {date} has been recorded.")
+            print(f"[vote on record] A vote for {candidate.name} on {date} has been recorded.")
             candidate.receive_vote()
         else:
-            print(f"[err] no such candidate exists")
+            print(f"[err] No such candidate exists")
 
     def __del__(self):
-        print("[burned ballot] Ballot has been destroyed.")
+        print("[killed b] Ballot has been destroyed.")
 
 class InPersonVoter(Voter):
     def __init__(self, name, voter_id, poll_booth):
@@ -62,11 +63,11 @@ class InPersonVoter(Voter):
         self.__poll_booth = poll_booth
 
     def vote(self, voting_ballot, candidate, date):
-        print(f"[vote b] Voting at booth {self.__poll_booth} on {date}")
+        print(f"[vote p] Voting at booth {self.__poll_booth} on {date}")
         super().vote(voting_ballot, candidate, date)
 
     def __del__(self):
-        print(f"[killed b] IRL voter {self.get_name()}, has been removed from the system.")
+        print(f"[killed p] IRL voter {self.get_name()}, has been removed from the system.")
 
 
 class OnlineVoter(Voter):
