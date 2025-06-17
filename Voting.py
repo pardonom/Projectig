@@ -80,19 +80,3 @@ class OnlineVoter(Voter):
 
     def __del__(self):
         print(f"[killed o] Online voter {self.get_name()}, has been removed from the system.")
-
-c1 = Candidate("Adam Malysz", "Skoczek")
-c2 = Candidate("Ten inny", "Gorsza")
-
-ballot = Ballot()
-ballot.add_candidate(c1)
-ballot.add_candidate(c2)
-
-voter1 = OnlineVoter("Boron", 132,"172.0.0.0")
-voter2 = InPersonVoter("Defenestration", 133,"165")
-
-voter1.vote(ballot, c1, "1.06.2025")
-voter2.vote(ballot, c2, "1.06.2025")
-
-voter1.vote(ballot, c1, "1.06.2025")
-
