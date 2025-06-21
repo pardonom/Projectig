@@ -11,10 +11,9 @@ class Voter:
     def get_voter_id(self):
         return self.__voter_id
 
-
     def vote(self, voting_ballot, candidate, date):
         if self.__already_voted:
-            print(f" Voter {self.__name}, has already voted.")
+            print(f"Voter {self.__name}, has already voted.")
 
         else:
             voting_ballot.record_vote(candidate,date)
