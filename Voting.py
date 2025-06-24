@@ -19,9 +19,6 @@ class Voter:
             voting_ballot.record_vote(candidate,date)
             self.__already_voted = True
 
-    def __del__(self):
-        print(f"[killed] Voter {self.__name}, has been removed from the system.")
-
 class Candidate:
     def __init__(self, name, party):
         self.name=name
@@ -32,10 +29,6 @@ class Candidate:
     def receive_vote(self):
         self.votes += 1
         print(f"[vote +] A vote has been recorded for {self.name} affiliated with {self.party}. They have now {self.votes} vote(s).")
-
-    def __del__(self):
-        print(f"[killed c] Candidate {self.name} has been executed")
-
 
 class Ballot:
     def __init__(self):
@@ -53,9 +46,6 @@ class Ballot:
         else:
             print(f"[err] No such candidate exists")
 
-    def __del__(self):
-        print("[killed b] Ballot has been destroyed.")
-
 class InPersonVoter(Voter):
     def __init__(self, name, voter_id, poll_booth):
         super().__init__(name, voter_id)
@@ -64,9 +54,6 @@ class InPersonVoter(Voter):
     def vote(self, voting_ballot, candidate, date):
         print(f"[vote p] Voting at booth {self.__poll_booth} on {date}")
         super().vote(voting_ballot, candidate, date)
-
-    def __del__(self):
-        print(f"[killed p] IRL voter {self.get_name()}, has been removed from the system.")
 
 
 class OnlineVoter(Voter):
@@ -77,6 +64,3 @@ class OnlineVoter(Voter):
     def vote(self, voting_ballot, candidate, date):
         print(f"[vote o] Voting from ip: {self.__ip_address} on {date}")
         super().vote(voting_ballot, candidate, date)
-
-    def __del__(self):
-        print(f"[killed o] Online voter {self.get_name()}, has been removed from the system.")
